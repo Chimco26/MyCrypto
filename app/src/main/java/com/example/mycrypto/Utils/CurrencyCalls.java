@@ -1,5 +1,7 @@
 package com.example.mycrypto.Utils;
 
+import android.util.Log;
+
 import com.example.mycrypto.Models.CryptoCurrency;
 
 import java.lang.ref.WeakReference;
@@ -25,12 +27,16 @@ public class CurrencyCalls {
             @Override
             public void onResponse(Call<List<CryptoCurrency>> call, Response<List<CryptoCurrency>> response) {
                 if (response.body() == null){
+                    Log.e("TAG", "GALERE HABIBI");
                     callbacksWeakReference.get().onFailure();
-                }else if (callbacksWeakReference.get() != null)
+                }else if (callbacksWeakReference.get() != null){
+                    Log.e("TAG", " " + response.body().toString());
                     callbacksWeakReference.get().onResponse(response.body());
+                }
             }
             @Override
             public void onFailure(Call<List<CryptoCurrency>> call, Throwable t) {
+                Log.e("TAG", "galere grave " + t.getMessage());
                 if (callbacksWeakReference.get() != null)
                     callbacksWeakReference.get().onFailure();
             }

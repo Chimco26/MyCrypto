@@ -6,25 +6,25 @@ import com.google.gson.annotations.SerializedName;
 public class CurrentPrice {
     @SerializedName("eur")
     @Expose
-    private Integer eur;
+    private double eur;
 
     @SerializedName("ils")
     @Expose
-    private Integer ils;
+    private double ils;
 
     @SerializedName("usd")
     @Expose
-    private Integer usd;
+    private double usd;
 
-    public Integer getEur() {
+    public double getEur() {
         return eur;
     }
 
-    public void setEur(Integer eur) {
+    public void setEur(double eur) {
         this.eur = eur;
     }
 
-    public Integer getIls() {
+    public double getIls() {
         return ils;
     }
 
@@ -32,7 +32,7 @@ public class CurrentPrice {
         this.ils = ils;
     }
 
-    public Integer getUsd() {
+    public double getUsd() {
         return usd;
     }
 

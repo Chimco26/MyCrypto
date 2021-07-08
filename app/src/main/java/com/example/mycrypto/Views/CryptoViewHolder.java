@@ -28,13 +28,14 @@ public class CryptoViewHolder extends RecyclerView.ViewHolder {
         eurPrice = itemView.findViewById(R.id.eur_price);
         ilsPrice = itemView.findViewById(R.id.ils_price);
         image = itemView.findViewById(R.id.item_image);
+        picasso = Picasso.with(itemView.getContext());
     }
 
     public void updateItemWithCrypto(CryptoCurrency cryptoCurrency){
-        textSymbol.setText(cryptoCurrency.getInfoData().getSymbol());
-        usdPrice.setText(cryptoCurrency.getInfoData().getMarketData().getCurrentPrice().getUsd());
-        eurPrice.setText(cryptoCurrency.getInfoData().getMarketData().getCurrentPrice().getEur());
-        ilsPrice.setText(cryptoCurrency.getInfoData().getMarketData().getCurrentPrice().getIls());
-        picasso.load(cryptoCurrency.getInfoData().getImage().getSmall()).into(image);
+        textSymbol.setText(cryptoCurrency.getId());
+        usdPrice.setText(cryptoCurrency.getMarketData().getCurrentPrice().getUsd() + " $");
+        eurPrice.setText(cryptoCurrency.getMarketData().getCurrentPrice().getEur() + " €");
+        ilsPrice.setText(cryptoCurrency.getMarketData().getCurrentPrice().getIls() + " NIS");
+        picasso.load(cryptoCurrency.getImage().getSmall()).into(image);
     }
 }

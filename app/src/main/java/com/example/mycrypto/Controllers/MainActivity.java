@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.mycrypto.Models.CryptoCurrency;
 import com.example.mycrypto.R;
@@ -28,8 +29,18 @@ public class MainActivity extends AppCompatActivity implements CurrencyCalls.Cal
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.my_recycler_view);
         swipeRefreshLayout = findViewById(R.id.my_swip_container);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                httpRequest();
+            }
+        });
         configureRecyclerView();
+        httpRequest();
+    }
 
+    private void httpRequest(){
+        CurrencyCalls.fetchCurrencies(this);
     }
 
     private void configureRecyclerView(){
@@ -42,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements CurrencyCalls.Cal
 
     @Override
     public void onResponse(List<CryptoCurrency> currencies) {
-        System.out.println("SYMBOL :"+currencies.get(0).getInfoData().getSymbol());
+        System.out.println("SYMBOL :"+currencies.get(0).getImage().getSmall());
         swipeRefreshLayout.setRefreshing(false);
         cryptoList.clear();
         cryptoList.addAll(currencies);
@@ -51,6 +62,6 @@ public class MainActivity extends AppCompatActivity implements CurrencyCalls.Cal
 
     @Override
     public void onFailure() {
-
+        Log.e("TAG", "ERREUR MON PETIT POULET!!!!!");
     }
 }
