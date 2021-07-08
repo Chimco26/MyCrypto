@@ -1,5 +1,6 @@
 package com.example.mycrypto.Views;
 
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
