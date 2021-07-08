@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="4"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="italic|bold" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -34,19 +34,19 @@
             android:id="@+id/usd_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/eur_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/ils_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 </LinearLayout>
